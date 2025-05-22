@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body{
+    background-color: rgb(30, 30, 30);
+    height: 100vh;
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    padding: 8px;
+}
+
+.header{
+    display:flex;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+    color:white;
+    border-bottom: 1px solid rgb(106, 106, 106);
+    margin: 0;
+    padding: 8px;
+}
+
+.document{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding:24px;
+    padding-bottom: 2px;
+    gap: 13px;
+    width: 100%;
+    max-width: 900px;
+
+}
+
+.left-bar, .right-bar{
+    display: flex;
+    height: 200px;
+    background-color: rgb(20, 20, 20);
+    border-radius: 24px;
+    box-shadow: 2px 2px 3px rgb(17, 17, 17), -2px -2px 3px rgb(17, 17, 17);
+    padding: 18px
+;
+}
+.left-bar{
+    flex: 1;
+    max-width: 200px;
+    justify-content: center;
+}
+
+.right-bar{
+    flex: 3;
+    max-width: 500px;
+}
+
+.left-content{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+
+}
+
+button{
+    background-color: rgb(49, 49, 49) ;
+    border-radius: 12px;
+    border:0px;
+    color: white;
+    padding:8px;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+button:hover{
+    background-color: rgb(96, 96, 96) ;
+}
+
+.text-box{
+    flex:1;
+    font-family: "IBM Plex Mono", monospace;
+    border: 1px solid rgb(76, 76, 76);
+    border-radius: 12px;
+    background-color: rgb(20, 20, 20);
+    width:100%;
+    height:auto;
+    color:white;
+    overflow:auto;
+    overflow: hidden;
+    resize:none;
+    font-size: 14px;
+    min-height: 175px;
+}
+
+.text-box::placeholder{
+    font-family: "IBM Plex Mono", monospace;
+    color: rgb(70, 70, 70);
+    font-size: 14px;
+}
+.text-box:focus{
+    border: 2px solid rgb(76, 76, 76);
+    outline: none;
+}
+.input{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width:100%;
+
+}
+
+.under-bar{
+    display: flex;
+    height: 175px;
+    width: 98%;
+    background-color: rgb(20, 20, 20);
+    border-radius: 24px;
+    box-shadow: 2px 2px 3px rgb(17, 17, 17), -2px -2px 3px rgb(17, 17, 17);
+    padding: 18px;
+    padding-bottom: 24px;
+    flex-direction: column;
+    max-width: 750px; 
+    margin: 0 auto;   
+    height: auto;
+}
+
+.columned{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    padding-top:100px;
+}
