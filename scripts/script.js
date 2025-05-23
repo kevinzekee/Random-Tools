@@ -1,42 +1,77 @@
-// Notes: get element by ID connects to the html via ID attribute
-// whatever information is in the ID, it is then stored in the inputText variable
+//Initialize
 const inputText = document.getElementById("text")
 const button = document.getElementById("btn")
 const result = document.getElementById("result")
+const emojisList = document.getElementById("emoji")
+const range = document.getElementById("range")
+let emojis = [
+  '💀', '🤡', '😭', '🧠', '🍕', '🗿', '🧌', '🫠', '😵‍💫', '🛐', '🚬', '🤲', '📉', '📈',
+  '🙃', '🤯', '🤑', '🥴', '🥵', '😵', '😐', '🫥', '💅', '👁️', '👄', '👁️', '😈', '😩',
+  '😳', '🤤', '🤌', '🪦', '🌚', '🌝', '🎃', '🪩', '🔮', '😶‍🌫️', '🍄', '🐸', '🧍',
+  '🧎', '🚶', '🏃', '🕳️', '📼', '🧿', '🦷', '🪷', '🪰', '🥴', '🦠', '🔪', '🧬', '🧫',
+  '🫃', '🫄', '🦑', '👹', '👺', '👻', '☠️', '😷', '🤢', '🫃', '🫥', '🌪️', '🛸', '🧨',
+  '📟', '📀', '🎮', '📡', '🚽', '💻', '📲', '😹', '🫳', '🫴', '🧻', '🛏️', '🫥', '👾'
+];
 
 
-// Notes: use the variable and call a function named addEventListener
-// it should take in "input" as an argument, it states the event type as "input"
-// 
-button.addEventListener("click", () => {
-    console.log(inputText.value)
+//Load initial range value
+ranges = parseInt(range.value)
 
-    let text = inputText.value.split(" ")
-    console.log(text)
-    let emojis = ['😂', '🔥', '🤡', '💀', '🤯', '😭', '😩', '🧠', '🍕', '👀', '✨', '💢', '😳', '😈']
-    //console.log(text.length)
+//Update range value whenever user moves it
+range.addEventListener("input", ()=>{
 
-    i = 0
-    let returned = " ";
-    while (i < text.length){
-        returned += text[i]
-        let random = Math.floor(Math.random() * 14)
-            returned += " " + emojis[random]
-        returned += " "
-        i += 1
+    ranges = parseInt(range.value)
 
-        result.value = returned;
-        console.log(returned)
-        console.log(result.value)
-    }
+})
 
+
+//Update array of emojis when user deletes/adds more emojis
+emojisList.addEventListener("input", (event) => {
+
+    const newEmojis = event.target.value.split(/\s+/).filter(e => e !== "");
+    emojis = newEmojis;
+    console.log("Updated emoji list:", emojis);
 
 });
 
 
+button.addEventListener("click", () => {
+
+    let text = inputText.value.split(" ")
+
+    i = 0
+    let returned = " ";
+    for (let i = 0; i < text.length; i++) {
+
+        returned += text[i] + " "
+
+        if((i + 1)  % ranges === 0 || i === text.length - 1 ){
+
+            let random = Math.floor(Math.random() * emojis.length)
+                returned += " "  + emojis[random] + " "
+            result.value = returned;
+
+        }
+    }
+});
+
+
+//Refresh to initial state and remove previous text when refreshed
 window.onload = function() {
+
   document.getElementById("text").value = "";
   document.getElementById("result").value = "";
+  let emojis = [
+  '💀', '🤡', '😭', '🧠', '🍕', '🗿', '🧌', '🫠', '😵‍💫', '🛐', '🚬', '🤲', '📉', '📈',
+  '🙃', '🤯', '🤑', '🥴', '🥵', '😵', '😐', '🫥', '💅', '👁️', '👄', '👁️', '😈', '😩',
+  '😳', '🤤', '🤌', '🪦', '🌚', '🌝', '🎃', '🪩', '🔮', '😶‍🌫️', '🍄', '🐸', '🧍',
+  '🧎', '🚶', '🏃', '🕳️', '📼', '🧿', '🦷', '🪷', '🪰', '🥴', '🦠', '🔪', '🧬', '🧫',
+  '🫃', '🫄', '🦑', '👹', '👺', '👻', '☠️', '😷', '🤢', '🫃', '🫥', '🌪️', '🛸', '🧨',
+  '📟', '📀', '🎮', '📡', '🚽', '💻', '📲', '😹', '🫳', '🫴', '🧻', '🛏️', '🫥', '👾'
+];
+
+
+    emojisList.value = emojis.join(" ");
 }
 
 
