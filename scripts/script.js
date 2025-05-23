@@ -31,6 +31,7 @@ emojisList.addEventListener("input", (event) => {
     const newEmojis = event.target.value.split(/\s+/).filter(e => e !== "");
     emojis = newEmojis;
     console.log("Updated emoji list:", emojis);
+    console.log(emojis.length)
 
 });
 
@@ -41,17 +42,22 @@ button.addEventListener("click", () => {
 
     i = 0
     let returned = " ";
-    for (let i = 0; i < text.length; i++) {
+    if(emojis.length > 0){
+        for (let i = 0; i < text.length; i++) {
 
-        returned += text[i] + " "
+            returned += text[i] + " "
 
-        if((i + 1)  % ranges === 0 || i === text.length - 1 ){
+            if((i + 1)  % ranges === 0 || i === text.length - 1 ){
 
-            let random = Math.floor(Math.random() * emojis.length)
-                returned += " "  + emojis[random] + " "
-            result.value = returned;
+                let random = Math.floor(Math.random() * emojis.length)
+                    returned += " "  + emojis[random] + " "
+                result.value = returned;
 
+            }
         }
+    }
+    else{
+        result.value = "There are no Emojis!"
     }
 });
 
